@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0.1//EN">
+<html>
+<head>
+  <title>Simple Image Slide Show</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <script type="text/javascript">
+/*
+  _________      .__       .____   _______
+ /   _____/ ____ |__|_____ |    |  \   _  \    ____
+ \_____  \ /    \|  \____ \|    |  /  /_\  \  / ___\
+ /        \   |  \  |  |_> >    |__\  \_/   \/ /_/  >
+/_______  /___|  /__|   __/|_______ \_____  /\___  /
+        \/     \/   |__|           \/     \//_____/
+http://snippet.c0de.me
+slac3dork@gmail.com
+*/
+var i = 0;
+var total = 5; // total slide show images
+var t = 0;
+
+function initial() {
+	images[0] = 'path/to/images/1.jpg';
+	images[1] = 'path/to/images/2.jpg';
+	images[2] = 'path/to/images/3.jpg';
+	images[3] = 'path/to/images/4.jpg';
+	images[4] = 'path/to/images/5.jpg';
+}
+
+function timer() {
+	clearTimeout(t);
+	t = setTimeout('nextimg()', 3000);
+}
+
+function imageError() {
+	nextimg();
+}
+
+function previmg(){
+	if (i != 0){
+		i = i - 1;
+	} else {
+		i = total;
+	}
+		document.banner_show.src = images[i];
+}
+
+function nextimg(){
+	if (i != total){
+		i = i + 1;
+	} else {
+		i = 0;
+	}
+	document.banner_show.src = images[i];
+}
+  </script>
+</head>
+<body>
+  <img src="path/to/images/1.jpg" onLoad="initial();" onError="imageError" alt="" />
+  <a onclick="previmg(); return false;">prev</a>
+  <a onclick="nextimg(); return false;">next</a>
+</body>
+</html>
+
